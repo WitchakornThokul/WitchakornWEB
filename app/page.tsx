@@ -79,6 +79,11 @@ const highlights = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/composer.svg',
     category: 'Backend'
   },
+  {
+    title: 'Python',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg',
+    category: 'Backend'
+  },
   // Mobile
   {
     title: 'React Native',
@@ -101,6 +106,11 @@ const highlights = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg',
     category: 'Database'
   },
+  {
+    title: 'MongoDB',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg',
+    category: 'Database'
+  },
   // Design & Tools
   {
     title: 'Figma',
@@ -120,6 +130,11 @@ const highlights = [
   {
     title: 'Google Apps Script',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg',
+    category: 'Tools'
+  },
+  {
+    title: 'Google Sheets',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlesheets.svg',
     category: 'Tools'
   }
 ];
