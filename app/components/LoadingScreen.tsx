@@ -137,7 +137,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       />
 
       {/* ── Centered content wrapper ── */}
-      <div className="relative z-10 flex w-full max-w-sm flex-col items-center gap-8 sm:max-w-lg">
+      <div className="relative z-10 flex w-full max-w-sm flex-col items-center gap-5 sm:max-w-lg sm:gap-8">
 
         {/* Name block */}
         <div className="w-full text-center">
@@ -172,7 +172,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         </div>
 
         {/* Icons grid */}
-        <div className="grid w-full grid-cols-4 gap-2 sm:grid-cols-6 sm:gap-3 md:grid-cols-8">
+        <div className="grid w-full grid-cols-5 gap-2 sm:grid-cols-6 sm:gap-3 md:grid-cols-8">
           {icons.map((icon, i) => (
             <div
               key={icon.title}
@@ -188,7 +188,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
               }}
             >
               <div
-                className="flex h-9 w-9 items-center justify-center rounded-xl sm:h-10 sm:w-10"
+                className="flex h-8 w-8 items-center justify-center rounded-xl sm:h-10 sm:w-10"
                 style={{
                   backgroundColor: `${icon.color}18`,
                   border: `1px solid ${icon.color}45`,
@@ -199,7 +199,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
                 <img
                   src={icon.logo}
                   alt={icon.title}
-                  style={{ width: 17, height: 17, filter: 'brightness(0) invert(1)' }}
+                  style={{ width: 15, height: 15, filter: 'brightness(0) invert(1)' }}
                   loading="eager"
                 />
               </div>
