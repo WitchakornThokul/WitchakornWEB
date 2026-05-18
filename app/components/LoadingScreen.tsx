@@ -182,7 +182,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       </div>
 
       {/* Icons grid */}
-      <div className="relative mb-10 grid w-full max-w-lg grid-cols-6 gap-3 sm:grid-cols-8">
+      <div className="relative mb-8 grid w-full max-w-lg grid-cols-4 gap-2 sm:grid-cols-6 sm:gap-3 md:grid-cols-8 sm:mb-10">
         {icons.map((icon, i) => (
           <div
             key={icon.title}
