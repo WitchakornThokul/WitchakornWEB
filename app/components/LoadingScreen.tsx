@@ -76,7 +76,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden px-6"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6"
       style={{
         background: '#000000',
         opacity: exiting ? 0 : 1,
@@ -136,92 +136,82 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         }}
       />
 
-      {/* Name block */}
-      <div className="relative mb-10 text-center">
-        {/* Spinning gradient ring */}
-        <div
-          className="pointer-events-none absolute"
-          style={{
-            inset: '-20px',
-            borderRadius: '50%',
-            background: 'conic-gradient(from 0deg, #00d9ff, #a78bfa, #f472b6, #fb923c, #fbbf24, #4ade80, #00d9ff)',
-            animation: 'spin-slow 6s linear infinite',
-            WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 100%)',
-            mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 100%)',
-            opacity: 0.6,
-          }}
-        />
-        {/* Counter-spin inner ring */}
-        <div
-          className="pointer-events-none absolute"
-          style={{
-            inset: '-10px',
-            borderRadius: '50%',
-            background: 'conic-gradient(from 180deg, rgba(244,114,182,0.5), rgba(0,217,255,0.5), rgba(167,139,250,0.5), rgba(244,114,182,0.5))',
-            animation: 'spin-slow-rev 10s linear infinite',
-            WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 1px), #000 100%)',
-            mask: 'radial-gradient(farthest-side, transparent calc(100% - 1px), #000 100%)',
-            opacity: 0.4,
-          }}
-        />
+      {/* ── Centered content wrapper ── */}
+      <div className="relative z-10 flex w-full max-w-sm flex-col items-center gap-8 sm:max-w-lg">
 
-        <p className="relative mb-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/25">
-          Portfolio
-        </p>
-        <h1
-          className="relative font-['Space_Grotesk'] text-3xl font-bold sm:text-4xl"
-          style={{
-            background: 'linear-gradient(135deg, #00d9ff 0%, #a78bfa 50%, #f472b6 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
-        >
-          WITCHAKORN THOKUL
-        </h1>
-      </div>
-
-      {/* Icons grid */}
-      <div className="relative mb-8 grid w-full max-w-lg grid-cols-4 gap-2 sm:grid-cols-6 sm:gap-3 md:grid-cols-8 sm:mb-10">
-        {icons.map((icon, i) => (
+        {/* Name block */}
+        <div className="w-full text-center">
+          {/* Glow backdrop */}
           <div
-            key={icon.title}
-            className="flex flex-col items-center gap-1.5"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
             style={{
-              opacity: i < visibleCount ? 1 : 0,
-              transform:
-                i < visibleCount
-                  ? 'scale(1) translateY(0)'
-                  : 'scale(0.45) translateY(14px)',
-              transition:
-                'opacity 0.38s cubic-bezier(0.34,1.56,0.64,1), transform 0.38s cubic-bezier(0.34,1.56,0.64,1)',
+              width: '260px', height: '60px',
+              background: 'radial-gradient(ellipse, rgba(167,139,250,0.25) 0%, transparent 70%)',
+              filter: 'blur(20px)',
+            }}
+          />
+          <p className="relative mb-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/25">
+            Portfolio
+          </p>
+          <h1
+            className="relative font-['Space_Grotesk'] text-2xl font-bold sm:text-3xl md:text-4xl"
+            style={{
+              background: 'linear-gradient(135deg, #00d9ff 0%, #a78bfa 50%, #f472b6 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
+            WITCHAKORN THOKUL
+          </h1>
+          {/* Rainbow underline */}
+          <div
+            className="mx-auto mt-2 h-0.5 w-24 rounded-full"
+            style={{ background: 'linear-gradient(90deg, #00d9ff, #a78bfa, #f472b6)', animation: 'spin-slow 4s linear infinite' }}
+          />
+        </div>
+
+        {/* Icons grid */}
+        <div className="grid w-full grid-cols-4 gap-2 sm:grid-cols-6 sm:gap-3 md:grid-cols-8">
+          {icons.map((icon, i) => (
             <div
-              className="flex h-10 w-10 items-center justify-center rounded-xl"
+              key={icon.title}
+              className="flex flex-col items-center gap-1"
               style={{
-                backgroundColor: `${icon.color}18`,
-                border: `1px solid ${icon.color}45`,
-                boxShadow: i < visibleCount ? `0 0 16px ${icon.color}40` : 'none',
-                transition: 'box-shadow 0.4s ease',
+                opacity: i < visibleCount ? 1 : 0,
+                transform:
+                  i < visibleCount
+                    ? 'scale(1) translateY(0)'
+                    : 'scale(0.45) translateY(14px)',
+                transition:
+                  'opacity 0.38s cubic-bezier(0.34,1.56,0.64,1), transform 0.38s cubic-bezier(0.34,1.56,0.64,1)',
               }}
             >
-              <img
-                src={icon.logo}
-                alt={icon.title}
-                style={{ width: 20, height: 20, filter: 'brightness(0) invert(1)' }}
-                loading="eager"
-              />
+              <div
+                className="flex h-9 w-9 items-center justify-center rounded-xl sm:h-10 sm:w-10"
+                style={{
+                  backgroundColor: `${icon.color}18`,
+                  border: `1px solid ${icon.color}45`,
+                  boxShadow: i < visibleCount ? `0 0 14px ${icon.color}40` : 'none',
+                  transition: 'box-shadow 0.4s ease',
+                }}
+              >
+                <img
+                  src={icon.logo}
+                  alt={icon.title}
+                  style={{ width: 17, height: 17, filter: 'brightness(0) invert(1)' }}
+                  loading="eager"
+                />
+              </div>
+              <span className="text-center text-[8px] leading-tight text-white/30 sm:text-[9px]">
+                {icon.title}
+              </span>
             </div>
-            <span className="text-center text-[9px] leading-tight text-white/30">
-              {icon.title}
-            </span>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      {/* Progress section */}
-      <div className="relative w-full max-w-sm space-y-3">
+        {/* Progress section */}
+        <div className="w-full space-y-3">
         <div className="flex items-center justify-between text-xs">
           <span className="text-white/35">{MESSAGES[msgIndex]}</span>
           <span
@@ -265,7 +255,8 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             }}
           />
         </div>
-      </div>
+
+      </div>{/* end centered wrapper */}
     </div>
   );
 }
