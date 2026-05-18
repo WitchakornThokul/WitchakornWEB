@@ -45,7 +45,6 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
 
   useEffect(() => {
     const startTime = performance.now();
-    // All icons fully visible by 85% progress
     const stagger = (DURATION * 0.85) / icons.length;
     let rafId: number;
 
@@ -77,35 +76,100 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center px-6"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden px-6"
       style={{
-        background:
-          'radial-gradient(ellipse 70% 50% at 0% 0%, rgba(99,102,241,0.22) 0%, transparent 50%),' +
-          'radial-gradient(ellipse 55% 40% at 100% 0%, rgba(0,217,255,0.14) 0%, transparent 45%),' +
-          'radial-gradient(ellipse 80% 50% at 50% 110%, rgba(168,85,247,0.10) 0%, transparent 55%),' +
-          '#060a1a',
+        background: '#000000',
         opacity: exiting ? 0 : 1,
         transition: exiting ? 'opacity 0.7s ease' : 'none',
       }}
     >
-      {/* Dot grid overlay */}
+      {/* Aurora blobs */}
       <div
-        className="pointer-events-none fixed inset-0"
+        className="pointer-events-none absolute"
         style={{
-          backgroundImage: 'radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-          maskImage: 'radial-gradient(ellipse 90% 60% at 50% 0%, black, transparent)',
-          WebkitMaskImage: 'radial-gradient(ellipse 90% 60% at 50% 0%, black, transparent)',
+          top: '-10%', left: '-10%',
+          width: '55%', height: '55%',
+          background: 'radial-gradient(circle, rgba(139,92,246,0.32) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          animation: 'aurora 9s ease-in-out infinite',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: '-8%', right: '-8%',
+          width: '48%', height: '48%',
+          background: 'radial-gradient(circle, rgba(0,217,255,0.26) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          animation: 'aurora 11s ease-in-out infinite 2s',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          bottom: '-12%', left: '18%',
+          width: '65%', height: '50%',
+          background: 'radial-gradient(circle, rgba(244,114,182,0.22) 0%, transparent 70%)',
+          filter: 'blur(70px)',
+          animation: 'aurora 13s ease-in-out infinite 4s',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute"
+        style={{
+          top: '40%', left: '-5%',
+          width: '30%', height: '30%',
+          background: 'radial-gradient(circle, rgba(74,222,128,0.14) 0%, transparent 70%)',
+          filter: 'blur(60px)',
+          animation: 'aurora 15s ease-in-out infinite 6s',
         }}
       />
 
-      {/* Name */}
+      {/* Grid overlay */}
+      <div
+        className="pointer-events-none fixed inset-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),' +
+            'linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* Name block */}
       <div className="relative mb-10 text-center">
-        <p className="mb-1 text-xs font-semibold uppercase tracking-[0.25em] text-white/25">
+        {/* Spinning gradient ring */}
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            inset: '-20px',
+            borderRadius: '50%',
+            background: 'conic-gradient(from 0deg, #00d9ff, #a78bfa, #f472b6, #fb923c, #fbbf24, #4ade80, #00d9ff)',
+            animation: 'spin-slow 6s linear infinite',
+            WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 100%)',
+            mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #000 100%)',
+            opacity: 0.6,
+          }}
+        />
+        {/* Counter-spin inner ring */}
+        <div
+          className="pointer-events-none absolute"
+          style={{
+            inset: '-10px',
+            borderRadius: '50%',
+            background: 'conic-gradient(from 180deg, rgba(244,114,182,0.5), rgba(0,217,255,0.5), rgba(167,139,250,0.5), rgba(244,114,182,0.5))',
+            animation: 'spin-slow-rev 10s linear infinite',
+            WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 1px), #000 100%)',
+            mask: 'radial-gradient(farthest-side, transparent calc(100% - 1px), #000 100%)',
+            opacity: 0.4,
+          }}
+        />
+
+        <p className="relative mb-1 text-xs font-semibold uppercase tracking-[0.28em] text-white/25">
           Portfolio
         </p>
         <h1
-          className="font-['Space_Grotesk'] text-3xl font-bold sm:text-4xl"
+          className="relative font-['Space_Grotesk'] text-3xl font-bold sm:text-4xl"
           style={{
             background: 'linear-gradient(135deg, #00d9ff 0%, #a78bfa 50%, #f472b6 100%)',
             WebkitBackgroundClip: 'text',
@@ -128,23 +192,24 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
               transform:
                 i < visibleCount
                   ? 'scale(1) translateY(0)'
-                  : 'scale(0.5) translateY(12px)',
-              transition: 'opacity 0.35s cubic-bezier(0.34,1.56,0.64,1), transform 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+                  : 'scale(0.45) translateY(14px)',
+              transition:
+                'opacity 0.38s cubic-bezier(0.34,1.56,0.64,1), transform 0.38s cubic-bezier(0.34,1.56,0.64,1)',
             }}
           >
-            {/* Icon badge */}
             <div
               className="flex h-10 w-10 items-center justify-center rounded-xl"
               style={{
                 backgroundColor: `${icon.color}18`,
-                border: `1px solid ${icon.color}35`,
-                boxShadow: i < visibleCount ? `0 0 10px ${icon.color}22` : 'none',
+                border: `1px solid ${icon.color}45`,
+                boxShadow: i < visibleCount ? `0 0 16px ${icon.color}40` : 'none',
+                transition: 'box-shadow 0.4s ease',
               }}
             >
               <img
                 src={icon.logo}
                 alt={icon.title}
-                className="h-5 w-5 filter brightness-0 invert"
+                style={{ width: 20, height: 20, filter: 'brightness(0) invert(1)' }}
                 loading="eager"
               />
             </div>
@@ -155,14 +220,14 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         ))}
       </div>
 
-      {/* Status + progress */}
+      {/* Progress section */}
       <div className="relative w-full max-w-sm space-y-3">
         <div className="flex items-center justify-between text-xs">
           <span className="text-white/35">{MESSAGES[msgIndex]}</span>
           <span
-            className="font-['Space_Grotesk'] font-semibold tabular-nums"
+            className="font-['Space_Grotesk'] font-bold tabular-nums"
             style={{
-              background: 'linear-gradient(90deg, #00d9ff, #a78bfa)',
+              background: 'linear-gradient(90deg, #00d9ff, #a78bfa, #f472b6)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -172,14 +237,30 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
           </span>
         </div>
 
-        {/* Progress bar track */}
-        <div className="h-1 w-full overflow-hidden rounded-full bg-white/[0.06]">
+        {/* Track */}
+        <div
+          className="relative h-1.5 w-full overflow-hidden rounded-full"
+          style={{ background: 'rgba(255,255,255,0.06)' }}
+        >
+          {/* Fill */}
           <div
             className="h-full rounded-full"
             style={{
               width: `${progress}%`,
-              background: 'linear-gradient(90deg, #00d9ff, #a78bfa, #f472b6)',
-              boxShadow: '0 0 14px rgba(0,217,255,0.55)',
+              background: 'linear-gradient(90deg, #00d9ff, #a78bfa, #f472b6, #fb923c)',
+              boxShadow: '0 0 18px rgba(0,217,255,0.65), 0 0 8px rgba(167,139,250,0.5)',
+              transition: 'width 0.08s linear',
+            }}
+          />
+          {/* Shimmer on top of fill */}
+          <div
+            className="absolute inset-y-0 left-0 rounded-full"
+            style={{
+              width: `${progress}%`,
+              background:
+                'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%)',
+              backgroundSize: '200% 100%',
+              animation: 'shimmer 1.5s linear infinite',
               transition: 'width 0.08s linear',
             }}
           />
