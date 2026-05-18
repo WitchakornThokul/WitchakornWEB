@@ -117,6 +117,7 @@ const highlights = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg',
     category: 'Tools'
   },
+
   {
     title: 'Canva',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg',
@@ -135,6 +136,11 @@ const highlights = [
   {
     title: 'Google Sheets',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlesheets.svg',
+    category: 'Tools'
+  },
+  {
+    title: 'Postman',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg',
     category: 'Tools'
   }
 ];
