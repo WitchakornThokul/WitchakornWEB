@@ -142,7 +142,7 @@ export default function Home() {
                   backgroundClip: 'text',
                 }}
               >
-                WITCHAKORN.DEV
+                WITCHAKORN
               </span>
             </div>
 
@@ -185,7 +185,7 @@ export default function Home() {
         <div className="mx-auto w-full max-w-5xl space-y-28 px-6 py-10">
 
           {/* ── Hero ── */}
-          <section className="relative overflow-hidden py-20 sm:py-28">
+          <section className="relative py-20 sm:py-28">
             {/* Floating orbs */}
             <div
               className="pointer-events-none absolute"
