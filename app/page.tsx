@@ -53,6 +53,16 @@ const highlights = [
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg',
     category: 'Frontend'
   },
+  {
+    title: 'Angular',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/angular.svg',
+    category: 'Frontend'
+  },
+  {
+    title: 'Bootstrap',
+    logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bootstrap.svg',
+    category: 'Frontend'
+  },
   // Backend
   {
     title: 'Node.js',
