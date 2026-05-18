@@ -85,9 +85,6 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
         opacity: exiting ? 0 : 1,
         transition: exiting ? 'opacity 0.7s ease' : 'none',
         overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
       }}
     >
       {/* Aurora blobs */}
@@ -98,10 +95,13 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       {/* Grid overlay */}
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, pointerEvents: 'none', backgroundImage: 'linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-      {/* Content — single centered column */}
+      {/* Content — absolute center (most reliable on mobile) */}
       <div
         style={{
-          position: 'relative',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           zIndex: 10,
           width: '100%',
           maxWidth: '480px',
@@ -109,7 +109,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '24px',
+          gap: '20px',
         }}
       >
         {/* Name */}
