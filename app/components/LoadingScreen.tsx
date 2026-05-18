@@ -76,13 +76,15 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
     <div
       style={{
         position: 'fixed',
-        inset: 0,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
         zIndex: 50,
         background: '#000000',
         opacity: exiting ? 0 : 1,
         transition: exiting ? 'opacity 0.7s ease' : 'none',
         overflow: 'hidden',
-        /* centering */
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -94,7 +96,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       <div style={{ position: 'absolute', bottom: '-12%', left: '18%', width: '65%', height: '50%', background: 'radial-gradient(circle, rgba(244,114,182,0.22) 0%, transparent 70%)', filter: 'blur(70px)', animation: 'aurora 13s ease-in-out infinite 4s', pointerEvents: 'none' }} />
 
       {/* Grid overlay */}
-      <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', backgroundImage: 'linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, pointerEvents: 'none', backgroundImage: 'linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
       {/* Content — single centered column */}
       <div
@@ -132,12 +134,12 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
           <div style={{ width: '64px', height: '2px', borderRadius: '1px', background: 'linear-gradient(90deg, #00d9ff, #a78bfa, #f472b6)', margin: '10px auto 0' }} />
         </div>
 
-        {/* Icons grid */}
+        {/* Icons grid — 6 cols, icon size scales with viewport */}
         <div
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(6, 1fr)',
-            gap: '8px',
+            gap: 'clamp(4px, 1.5vw, 10px)',
             width: '100%',
           }}
         >
@@ -148,7 +150,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                gap: '4px',
+                gap: '3px',
                 opacity: i < visibleCount ? 1 : 0,
                 transform: i < visibleCount ? 'scale(1) translateY(0)' : 'scale(0.5) translateY(10px)',
                 transition: 'opacity 0.35s cubic-bezier(0.34,1.56,0.64,1), transform 0.35s cubic-bezier(0.34,1.56,0.64,1)',
@@ -156,8 +158,8 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             >
               <div
                 style={{
-                  width: '36px',
-                  height: '36px',
+                  width: 'clamp(30px, 8vw, 44px)',
+                  height: 'clamp(30px, 8vw, 44px)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -166,11 +168,12 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
                   border: `1px solid ${icon.color}45`,
                   boxShadow: i < visibleCount ? `0 0 12px ${icon.color}40` : 'none',
                   transition: 'box-shadow 0.4s ease',
+                  flexShrink: 0,
                 }}
               >
-                <img src={icon.logo} alt={icon.title} style={{ width: 16, height: 16, filter: 'brightness(0) invert(1)' }} loading="eager" />
+                <img src={icon.logo} alt={icon.title} style={{ width: 'clamp(12px, 3.5vw, 18px)', height: 'clamp(12px, 3.5vw, 18px)', filter: 'brightness(0) invert(1)' }} loading="eager" />
               </div>
-              <span style={{ fontSize: '8px', color: 'rgba(255,255,255,0.3)', textAlign: 'center', lineHeight: 1.2 }}>
+              <span style={{ fontSize: 'clamp(7px, 1.8vw, 9px)', color: 'rgba(255,255,255,0.3)', textAlign: 'center', lineHeight: 1.2 }}>
                 {icon.title}
               </span>
             </div>
@@ -209,7 +212,9 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             <div
               style={{
                 position: 'absolute',
-                inset: '0 auto 0 0',
+                top: 0,
+                bottom: 0,
+                left: 0,
                 width: `${progress}%`,
                 borderRadius: '3px',
                 background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
