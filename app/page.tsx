@@ -26,121 +26,144 @@ const highlights = [
   {
     title: 'HTML',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/html5.svg',
+    href: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
     category: 'Frontend'
   },
   {
     title: 'CSS',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/css3.svg',
+    href: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
     category: 'Frontend'
   },
   {
     title: 'JavaScript',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/javascript.svg',
+    href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
     category: 'Frontend'
   },
   {
     title: 'React',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg',
+    href: 'https://react.dev/',
     category: 'Frontend'
   },
   {
     title: 'Next.js',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg',
+    href: 'https://nextjs.org/',
     category: 'Frontend'
   },
   {
     title: 'Tailwind CSS',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/tailwindcss.svg',
+    href: 'https://tailwindcss.com/',
     category: 'Frontend'
   },
   {
     title: 'Angular',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/angular.svg',
+    href: 'https://angular.dev/',
     category: 'Frontend'
   },
   {
     title: 'Bootstrap',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/bootstrap.svg',
+    href: 'https://getbootstrap.com/',
     category: 'Frontend'
   },
   // Backend
   {
     title: 'Node.js',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nodedotjs.svg',
+    href: 'https://nodejs.org/',
     category: 'Backend'
   },
   {
     title: 'PHP',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/php.svg',
+    href: 'https://www.php.net/',
     category: 'Backend'
   },
   {
     title: 'Slim Framework',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/composer.svg',
+    href: 'https://www.slimframework.com/',
     category: 'Backend'
   },
   {
     title: 'Python',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/python.svg',
+    href: 'https://www.python.org/',
     category: 'Backend'
   },
   // Mobile
   {
     title: 'React Native',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/react.svg',
+    href: 'https://reactnative.dev/',
     category: 'Mobile'
   },
   {
     title: 'Expo',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/expo.svg',
+    href: 'https://expo.dev/',
     category: 'Mobile'
   },
   // Database
   {
     title: 'Firebase',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/firebase.svg',
+    href: 'https://firebase.google.com/',
     category: 'Database'
   },
   {
     title: 'MySQL',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mysql.svg',
+    href: 'https://www.mysql.com/',
     category: 'Database'
   },
   {
     title: 'MongoDB',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/mongodb.svg',
+    href: 'https://www.mongodb.com/',
     category: 'Database'
   },
   // Design & Tools
   {
     title: 'Figma',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/figma.svg',
+    href: 'https://www.figma.com/',
     category: 'Tools'
   },
 
   {
     title: 'Canva',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/canva.svg',
+    href: 'https://www.canva.com/',
     category: 'Tools'
   },
   {
     title: 'WordPress',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/wordpress.svg',
+    href: 'https://wordpress.org/',
     category: 'Tools'
   },
   {
     title: 'Google Apps Script',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/google.svg',
+    href: 'https://developers.google.com/apps-script',
     category: 'Tools'
   },
   {
     title: 'Google Sheets',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/googlesheets.svg',
+    href: 'https://www.google.com/sheets/about/',
     category: 'Tools'
   },
   {
     title: 'Postman',
     logo: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/postman.svg',
+    href: 'https://www.postman.com/',
     category: 'Tools'
   }
 ];
@@ -243,18 +266,22 @@ export default function Home() {
                   {highlights
                     .filter((item) => item.category === category)
                     .map((item) => (
-                      <div
+                      <a
                         key={item.title}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
                         className="group flex items-center gap-3 rounded-md bg-white/5 px-4 py-3 transition hover:bg-white/8"
+                        title={`Open ${item.title} website`}
                       >
-                        <img 
+                        <img
                           src={item.logo}
                           alt={item.title}
                           className="h-6 w-6 flex-shrink-0 filter brightness-0 invert"
                           loading="lazy"
                         />
-                        <span className="font-medium text-white text-sm">{item.title}</span>
-                      </div>
+                        <span className="text-sm font-medium text-white">{item.title}</span>
+                      </a>
                     ))}
                 </div>
               </div>
