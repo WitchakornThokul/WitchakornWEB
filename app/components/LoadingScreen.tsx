@@ -255,6 +255,7 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
             }}
           />
         </div>
+        </div>{/* end progress section */}
 
       </div>{/* end centered wrapper */}
     </div>
