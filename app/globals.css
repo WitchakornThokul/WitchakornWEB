@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,53 @@
 
 :root {
   color-scheme: dark;
-  --background: #0a0e27;
-  --background-soft: #0f1333;
-  --panel: #12173d;
-  --panel-soft: #1a2447;
-  --text: #f0f4ff;
-  --muted: #8fa3d0;
-  --accent: #00d9ff;
-  --accent-soft: #4dd9ff;
-  --accent-dark: #0099cc;
-  --line: rgba(0, 217, 255, 0.12);
 }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 20% 0%, rgba(0, 217, 255, 0.08), transparent 25%),
-    radial-gradient(circle at 80% 100%, rgba(0, 217, 255, 0.06), transparent 30%),
-    linear-gradient(135deg, #0a0e27 0%, #0f1640 50%, #0a0e27 100%);
-  color: var(--text);
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(99, 102, 241, 0.22) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 40% at 100% 0%, rgba(0, 217, 255, 0.14) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 50% at 50% 110%, rgba(168, 85, 247, 0.10) 0%, transparent 55%),
+    #060a1a;
+  color: #eef0ff;
   font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* Subtle dot grid overlay */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 80%);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black, transparent);
 }
 
 ::selection {
-  background: rgba(244, 184, 96, 0.3);
-  color: var(--text);
+  background: rgba(0, 217, 255, 0.25);
+  color: white;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #060a1a; }
+::-webkit-scrollbar-thumb { background: rgba(0, 217, 255, 0.2); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 217, 255, 0.4); }
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+
+  .glass {
+    background: rgba(10, 14, 36, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
   }
 }
