@@ -573,7 +573,7 @@ export default function Home() {
           <section id="connect">
             <div className="mb-10">
               <p className="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-white/20">Let's talk</p>
-              <h2 className="font-['Space_Grotesk'] text-3xl font-bold text-white sm:text-4xl">Connect</h2>
+              <h2 className="font-['Space_Grotesk'] text-3xl font-bold text-white sm:text-4xl">Contact</h2>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
