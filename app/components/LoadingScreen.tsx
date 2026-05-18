@@ -95,17 +95,21 @@ export function LoadingScreen({ onDone }: { onDone: () => void }) {
       {/* Grid overlay */}
       <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, pointerEvents: 'none', backgroundImage: 'linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
 
-      {/* Content — absolute center (most reliable on mobile) */}
+      {/* Content — centered */}
       <div
         style={{
           position: 'absolute',
           top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
+          left: '0',
+          right: '0',
+          transform: 'translateY(-50%)',
           zIndex: 10,
           width: '100%',
-          maxWidth: '480px',
+          maxWidth: '460px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
           padding: '0 20px',
+          boxSizing: 'border-box',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
