@@ -90,7 +90,7 @@ export default function Home() {
   const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
-    const hasVisited = localStorage.getItem('hasVisited');
+    const hasVisited = sessionStorage.getItem('hasVisited');
     if (hasVisited) {
       setLoaded(true);
     } else {
@@ -99,7 +99,7 @@ export default function Home() {
   }, []);
 
   const handleDone = () => {
-    localStorage.setItem('hasVisited', '1');
+    sessionStorage.setItem('hasVisited', '1');
     setLoaded(true);
     setShowLoader(false);
   };
