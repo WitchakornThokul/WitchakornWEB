@@ -563,9 +563,9 @@ export default function Home() {
 
             <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
               {[
-                { label: 'Focus',     value: 'React Native & Firebase', icon: '📱', color: '#00d9ff' },
-                { label: 'Interests', value: 'Mobile, Cloud, AgriTech',  icon: '🌱', color: '#4ade80' },
-                { label: 'Location',  value: 'Thailand 🇹🇭',             icon: '📍', color: '#f472b6' },
+                { label: 'Focus',     value: 'React Native & Firebase', color: '#00d9ff' },
+                { label: 'Interests', value: 'Mobile, Cloud, AgriTech',  color: '#4ade80' },
+                { label: 'Location',  value: 'Thailand',                 color: '#f472b6' },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -587,16 +587,6 @@ export default function Home() {
                     el.style.background = 'rgba(255,255,255,0.02)';
                   }}
                 >
-                  <div
-                    className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl text-xl sm:mb-5 sm:h-12 sm:w-12 sm:text-2xl"
-                    style={{
-                      background: `${item.color}12`,
-                      border: `1px solid ${item.color}28`,
-                      boxShadow: `0 0 18px ${item.color}18`,
-                    }}
-                  >
-                    {item.icon}
-                  </div>
                   <p className="text-xs font-bold uppercase tracking-widest" style={{ color: `${item.color}90` }}>
                     {item.label}
                   </p>
