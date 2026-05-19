@@ -564,7 +564,7 @@ export default function Home() {
             <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
               {[
                 { label: 'Focus',     value: 'React Native & Firebase', color: '#00d9ff' },
-                { label: 'Interests', value: 'Mobile, Cloud, AgriTech',  color: '#4ade80' },
+                { label: 'Interests', value: 'Mobile, Cloud',  color: '#4ade80' },
                 { label: 'Location',  value: 'Thailand',                 color: '#f472b6' },
               ].map((item) => (
                 <div
