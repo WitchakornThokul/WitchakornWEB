@@ -1,8 +1,10 @@
+type Skill = { name: string; icon?: string };
+
 const contactLinks = [
-  { label: 'Email', value: 'art992398@email.com', href: 'mailto:art992398@email.com' },
-  { label: 'GitHub', value: 'WitchakornThokul', href: 'https://github.com/WitchakornThokul' },
-  { label: 'Facebook', value: 'tokki.once', href: 'https://web.facebook.com/tokki.once' },
-  { label: 'Instagram', value: 'mimosa_4103', href: 'https://www.instagram.com/mimosa_4103/' },
+  { label: 'Email', value: 'art992398@email.com', href: 'mailto:art992398@email.com', icon: 'gmail' },
+  { label: 'GitHub', value: 'WitchakornThokul', href: 'https://github.com/WitchakornThokul', icon: 'github' },
+  { label: 'Facebook', value: 'tokki.once', href: 'https://web.facebook.com/tokki.once', icon: 'facebook' },
+  { label: 'Instagram', value: 'mimosa_4103', href: 'https://www.instagram.com/mimosa_4103/', icon: 'instagram' },
 ];
 
 const stats = [
@@ -11,37 +13,46 @@ const stats = [
   { value: '1', label: 'Central sign-on for all apps' },
 ];
 
-const systems = [
+const systems: { name: string; summary: string; stack: Skill[] }[] = [
   {
     name: 'Smart Logistics Platform',
     summary:
       'Transport planning from sales orders, vehicle booking calendar, weighbridge ticket matching and shipment status tracking.',
-    stack: ['Cloudflare Workers', 'Supabase', 'Realtime'],
+    stack: [
+      { name: 'Cloudflare Workers', icon: 'cloudflareworkers' },
+      { name: 'Supabase', icon: 'supabase' },
+    ],
   },
   {
     name: 'Central Portal (SSO)',
     summary: 'Single sign-on entry point and application launcher for every internal system.',
-    stack: ['Cloudflare Pages', 'SSO'],
+    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
   },
   {
     name: 'DocAlert',
     summary: 'Document and contract renewal tracking with approval workflow and email notifications.',
-    stack: ['Cloudflare Pages', 'Supabase'],
+    stack: [
+      { name: 'Cloudflare Pages', icon: 'cloudflarepages' },
+      { name: 'Supabase', icon: 'supabase' },
+    ],
   },
   {
     name: 'Smart Business Dashboard',
     summary: 'Company KPI dashboard with task-oriented navigation and automated data collectors.',
-    stack: ['Cloudflare Pages', 'KPI'],
+    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
   },
   {
     name: 'Mini Business Dashboard',
     summary: 'Lightweight KPI view with role-based manual overrides for automated metrics.',
-    stack: ['Cloudflare Pages', 'RBAC'],
+    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
   },
   {
     name: 'ESG Disclosure Site',
     summary: 'Bilingual Thai and English ESG reporting across five categories.',
-    stack: ['React', 'Vite'],
+    stack: [
+      { name: 'React', icon: 'react' },
+      { name: 'Vite', icon: 'vite' },
+    ],
   },
 ];
 
@@ -72,15 +83,27 @@ const logisticsHighlights = [
   },
 ];
 
-const projects = [
+const projects: {
+  title: string;
+  category: string;
+  description: string;
+  stack: Skill[];
+  posterImageUrl: string;
+  videoUrl: string | null;
+  repoUrl: string;
+}[] = [
   {
     title: 'Smart Cow Tracker',
     category: 'Mobile application',
     description:
       'Dairy farm management app for tracking cows, health records, appointments and assistants.',
-    tags: ['React Native', 'Expo', 'Firebase'],
+    stack: [
+      { name: 'React Native', icon: 'react' },
+      { name: 'Expo', icon: 'expo' },
+      { name: 'Firebase', icon: 'firebase' },
+    ],
     posterImageUrl:
-      'https://res.cloudinary.com/dgh4ndaru/image/upload/v1778949911/Witchakorn_Poster_jbtl7j.jpg',
+      'https://res.cloudinary.com/dgh4ndaru/image/upload/c_fill,g_north,w_900,h_560/v1778949911/Witchakorn_Poster_jbtl7j.jpg',
     videoUrl: 'https://youtu.be/uTIGElkRXKc',
     repoUrl: 'https://github.com/WitchakornThokul/ACRUX',
   },
@@ -89,21 +112,78 @@ const projects = [
     category: 'Planning and booking system',
     description:
       'The original logistics planning and vehicle booking tool with approval and reporting flows, which preceded the Smart Logistics Platform.',
-    tags: ['Google Apps Script', 'Google Sheets'],
+    stack: [
+      { name: 'Google Apps Script', icon: 'googleappsscript' },
+      { name: 'Google Sheets', icon: 'googlesheets' },
+    ],
     posterImageUrl:
-      'https://res.cloudinary.com/dgh4ndaru/image/upload/v1778949911/InternshipPoster_Witchakorn_tunckf.jpg',
+      'https://res.cloudinary.com/dgh4ndaru/image/upload/c_fill,g_north,w_900,h_560/v1778949911/InternshipPoster_Witchakorn_tunckf.jpg',
     videoUrl: null,
     repoUrl: 'https://github.com/WitchakornThokul/PQS',
   },
 ];
 
-const skillGroups = [
-  { group: 'Languages', items: ['TypeScript', 'JavaScript', 'Python', 'PHP', 'SQL', 'HTML', 'CSS'] },
-  { group: 'Frontend', items: ['React', 'Next.js', 'Vite', 'Tailwind CSS', 'Angular', 'Bootstrap'] },
-  { group: 'Mobile', items: ['React Native', 'Expo'] },
-  { group: 'Backend and Data', items: ['Node.js', 'Supabase', 'PostgreSQL', 'Firebase', 'MySQL', 'MongoDB', 'Slim Framework'] },
-  { group: 'Cloud and Delivery', items: ['Cloudflare Workers', 'Cloudflare Pages', 'Vercel', 'Git'] },
-  { group: 'Automation and Tools', items: ['Google Apps Script', 'Google Sheets', 'Postman', 'Figma'] },
+const skillGroups: { group: string; items: Skill[] }[] = [
+  {
+    group: 'Languages',
+    items: [
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'JavaScript', icon: 'javascript' },
+      { name: 'Python', icon: 'python' },
+      { name: 'PHP', icon: 'php' },
+      { name: 'HTML', icon: 'html5' },
+      { name: 'CSS', icon: 'css' },
+    ],
+  },
+  {
+    group: 'Frontend',
+    items: [
+      { name: 'React', icon: 'react' },
+      { name: 'Next.js', icon: 'nextdotjs' },
+      { name: 'Vite', icon: 'vite' },
+      { name: 'Tailwind CSS', icon: 'tailwindcss' },
+      { name: 'Angular', icon: 'angular' },
+      { name: 'Bootstrap', icon: 'bootstrap' },
+    ],
+  },
+  {
+    group: 'Mobile',
+    items: [
+      { name: 'React Native', icon: 'react' },
+      { name: 'Expo', icon: 'expo' },
+    ],
+  },
+  {
+    group: 'Backend and Data',
+    items: [
+      { name: 'Node.js', icon: 'nodedotjs' },
+      { name: 'Supabase', icon: 'supabase' },
+      { name: 'PostgreSQL', icon: 'postgresql' },
+      { name: 'Firebase', icon: 'firebase' },
+      { name: 'MySQL', icon: 'mysql' },
+      { name: 'MongoDB', icon: 'mongodb' },
+    ],
+  },
+  {
+    group: 'Cloud and Delivery',
+    items: [
+      { name: 'Cloudflare', icon: 'cloudflare' },
+      { name: 'Cloudflare Workers', icon: 'cloudflareworkers' },
+      { name: 'Cloudflare Pages', icon: 'cloudflarepages' },
+      { name: 'Vercel', icon: 'vercel' },
+      { name: 'Git', icon: 'git' },
+      { name: 'GitHub', icon: 'github' },
+    ],
+  },
+  {
+    group: 'Automation and Tools',
+    items: [
+      { name: 'Google Apps Script', icon: 'googleappsscript' },
+      { name: 'Google Sheets', icon: 'googlesheets' },
+      { name: 'Postman', icon: 'postman' },
+      { name: 'Figma', icon: 'figma' },
+    ],
+  },
 ];
 
 const NAV_LINKS = [
@@ -113,19 +193,26 @@ const NAV_LINKS = [
   { href: '#contact', label: 'Contact' },
 ];
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function Logo({ icon, name, size = 16 }: { icon?: string; name: string; size?: number }) {
+  if (!icon) return null;
+  return <img src={`/icons/${icon}.svg`} alt="" aria-hidden width={size} height={size} title={name} />;
+}
+
+function SectionHeading({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
-    <div className="mb-8 sm:mb-10">
-      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-400">{eyebrow}</p>
-      <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">{title}</h2>
+    <div className="mb-10">
+      <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">{eyebrow}</p>
+      <h2 className="text-3xl font-semibold tracking-tight text-slate-900">{title}</h2>
+      {intro && <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-slate-500">{intro}</p>}
     </div>
   );
 }
 
-function Tag({ children }: { children: React.ReactNode }) {
+function StackChip({ skill }: { skill: Skill }) {
   return (
-    <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-0.5 text-xs font-medium text-slate-300">
-      {children}
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600">
+      <Logo icon={skill.icon} name={skill.name} size={13} />
+      {skill.name}
     </span>
   );
 }
@@ -134,17 +221,17 @@ export default function Home() {
   return (
     <main className="relative">
       {/* Header */}
-      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-[#0b0d10]/85 backdrop-blur">
-        <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-          <a href="#top" className="text-sm font-semibold tracking-wide text-white">
+      <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
+          <a href="#top" className="text-[15px] font-semibold tracking-tight text-slate-900">
             Witchakorn Thokul
           </a>
-          <nav className="flex items-center gap-4 text-xs font-medium text-slate-400 sm:gap-6 sm:text-sm">
+          <nav className="flex items-center gap-5 text-sm font-medium text-slate-500 sm:gap-8">
             {NAV_LINKS.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className={`transition-colors hover:text-white ${n.href === '#skills' ? 'hidden sm:inline' : ''}`}
+                className={`transition-colors hover:text-slate-900 ${n.href === '#skills' ? 'hidden sm:inline' : ''}`}
               >
                 {n.label}
               </a>
@@ -153,37 +240,38 @@ export default function Home() {
         </div>
       </header>
 
-      <div id="top" className="mx-auto w-full max-w-5xl space-y-20 px-4 py-12 sm:space-y-28 sm:px-6 sm:py-20">
-        {/* Hero */}
-        <section className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
-          <div className="space-y-6">
-            <p className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/[0.06] px-3 py-1 text-xs font-medium text-emerald-400">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+      {/* Hero */}
+      <section id="top" className="mx-auto max-w-6xl px-5 pb-16 pt-14 sm:px-8 sm:pb-24 sm:pt-24">
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_auto] md:gap-16">
+          <div className="space-y-7">
+            <p className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
               Open to opportunities
             </p>
-            <div className="space-y-3">
-              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <div className="space-y-4">
+              <h1 className="text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
                 Witchakorn Thokul
               </h1>
-              <p className="text-lg font-medium text-slate-300 sm:text-xl">
-                Full-Stack Developer, Enterprise Web Systems and Mobile
+              <p className="text-lg font-medium text-slate-600 sm:text-xl">
+                Full-Stack Developer <span className="text-slate-300">/</span> Enterprise Web Systems{' '}
+                <span className="text-slate-300">/</span> Mobile
               </p>
             </div>
-            <p className="max-w-2xl text-base leading-relaxed text-slate-400">
-              I build and operate internal business systems for a manufacturing and logistics organization,
-              covering transport planning, KPI dashboards, document workflows and ESG disclosure. Recently led the
-              move of five production systems from Vercel to Cloudflare under one company domain with central sign-on.
+            <p className="max-w-2xl text-[15px] leading-relaxed text-slate-500 sm:text-base">
+              I build and operate internal business systems for a manufacturing and logistics organization, covering
+              transport planning, KPI dashboards, document workflows and ESG disclosure. Recently led the move of five
+              production systems from Vercel to Cloudflare under one company domain with central sign-on.
             </p>
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <a
                 href="#experience"
-                className="rounded-lg bg-white px-6 py-3 text-center text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-200"
+                className="rounded-full bg-slate-900 px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-slate-700"
               >
                 View experience
               </a>
               <a
                 href="#contact"
-                className="rounded-lg border border-white/15 px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:border-white/40"
+                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-semibold text-slate-900 transition-colors hover:border-slate-900"
               >
                 Get in touch
               </a>
@@ -194,142 +282,176 @@ export default function Home() {
             alt="Witchakorn Thokul"
             width={640}
             height={640}
-            className="order-first h-28 w-28 rounded-2xl border border-white/10 object-cover sm:h-36 sm:w-36 md:order-none md:h-44 md:w-44 lg:h-52 lg:w-52"
+            className="order-first h-28 w-28 rounded-3xl object-cover shadow-xl shadow-slate-900/10 ring-1 ring-slate-200 sm:h-36 sm:w-36 md:order-none md:h-60 md:w-60"
           />
-        </section>
+        </div>
 
-        <section className="grid grid-cols-3 divide-x divide-white/[0.06] rounded-xl border border-white/[0.06] bg-white/[0.02]">
+        <div className="mt-14 grid grid-cols-3 divide-x divide-slate-200 rounded-2xl border border-slate-200 bg-white shadow-sm">
           {stats.map((s) => (
-            <div key={s.label} className="px-3 py-5 text-center sm:px-6 sm:py-6">
-              <p className="text-2xl font-semibold text-white sm:text-3xl">{s.value}</p>
-              <p className="mt-1 text-xs text-slate-400 sm:text-sm">{s.label}</p>
+            <div key={s.label} className="px-3 py-6 text-center sm:px-6">
+              <p className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-4xl">{s.value}</p>
+              <p className="mt-1 text-xs text-slate-500 sm:text-sm">{s.label}</p>
             </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        {/* Experience */}
-        <section id="experience" className="scroll-mt-20">
-          <SectionHeading eyebrow="Experience" title="Enterprise Systems Portfolio" />
-          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-400">
-            Six production systems used daily by operations, sales and management teams, sharing one company domain
-            and a single sign-on portal. Five moved from Vercel to Cloudflare in November 2026.
-          </p>
+      {/* Experience */}
+      <section id="experience" className="scroll-mt-16 border-y border-slate-200/70 bg-slate-50/70">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+          <SectionHeading
+            eyebrow="Experience"
+            title="Enterprise Systems Portfolio"
+            intro="Six production systems used daily by operations, sales and management teams, sharing one company domain and a single sign-on portal. Five moved from Vercel to Cloudflare in November 2026."
+          />
 
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {systems.map((s) => (
               <article
                 key={s.name}
-                className="flex flex-col rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:border-white/15"
+                className="flex flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
-                <h3 className="text-base font-semibold text-white">{s.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">{s.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <h3 className="text-base font-semibold text-slate-900">{s.name}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-500">{s.summary}</p>
+                <div className="mt-5 flex flex-wrap gap-1.5">
                   {s.stack.map((t) => (
-                    <Tag key={t}>{t}</Tag>
+                    <StackChip key={t.name} skill={t} />
                   ))}
                 </div>
               </article>
             ))}
           </div>
 
-          <div className="mt-12">
-            <h3 className="text-lg font-semibold text-white">Smart Logistics Platform: recent work</h3>
-            <p className="mt-1 text-sm text-slate-400">
-              Replaced a Google Apps Script tool with a full web application.
-            </p>
-            <dl className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
+          <div className="mt-16 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+            <h3 className="text-xl font-semibold tracking-tight text-slate-900">Smart Logistics Platform: recent work</h3>
+            <p className="mt-1 text-sm text-slate-500">Replaced a Google Apps Script tool with a full web application.</p>
+            <dl className="mt-8 grid gap-x-12 gap-y-7 sm:grid-cols-2">
               {logisticsHighlights.map((h) => (
-                <div key={h.title} className="border-l-2 border-sky-400/60 pl-4">
-                  <dt className="text-sm font-semibold text-white">{h.title}</dt>
-                  <dd className="mt-1 text-sm leading-relaxed text-slate-400">{h.body}</dd>
+                <div key={h.title} className="border-l-2 border-sky-500 pl-4">
+                  <dt className="text-sm font-semibold text-slate-900">{h.title}</dt>
+                  <dd className="mt-1 text-sm leading-relaxed text-slate-500">{h.body}</dd>
                 </div>
               ))}
             </dl>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Projects */}
-        <section id="projects" className="scroll-mt-20">
-          <SectionHeading eyebrow="Projects" title="Selected Projects" />
-          <div className="grid gap-6 lg:grid-cols-2">
-            {projects.map((p) => (
-              <article
-                key={p.title}
-                className="overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] transition-colors hover:border-white/15"
-              >
+      {/* Projects */}
+      <section id="projects" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8 sm:py-24">
+        <SectionHeading eyebrow="Projects" title="Selected Projects" />
+        <div className="grid gap-6 lg:grid-cols-2">
+          {projects.map((p) => (
+            <article
+              key={p.title}
+              className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              <div className="overflow-hidden border-b border-slate-100 bg-slate-50">
                 <img
                   src={p.posterImageUrl}
                   alt={`${p.title} poster`}
-                  className="aspect-[4/3] w-full object-cover object-top"
+                  className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
-                <div className="space-y-4 p-5 sm:p-6">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-sky-400">{p.category}</p>
-                    <h3 className="mt-2 text-lg font-semibold text-white">{p.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{p.description}</p>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {p.tags.map((t) => (
-                      <Tag key={t}>{t}</Tag>
-                    ))}
-                  </div>
-                  <div className="flex gap-5 pt-1 text-sm font-semibold">
-                    {p.videoUrl && (
-                      <a href={p.videoUrl} target="_blank" rel="noopener noreferrer" className="text-white underline-offset-4 hover:underline">
-                        Watch demo
-                      </a>
-                    )}
-                    <a href={p.repoUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 underline-offset-4 hover:text-white hover:underline">
-                      Source code
-                    </a>
-                  </div>
+              </div>
+              <div className="space-y-4 p-6">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-sky-600">{p.category}</p>
+                  <h3 className="mt-2 text-lg font-semibold text-slate-900">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-500">{p.description}</p>
                 </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Skills */}
-        <section id="skills" className="scroll-mt-20">
-          <SectionHeading eyebrow="Skills" title="Technical Skills" />
-          <div className="divide-y divide-white/[0.06] rounded-xl border border-white/[0.06]">
-            {skillGroups.map((g) => (
-              <div key={g.group} className="grid gap-3 p-5 sm:grid-cols-[200px_1fr] sm:items-center">
-                <p className="text-sm font-semibold text-white">{g.group}</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {g.items.map((i) => (
-                    <Tag key={i}>{i}</Tag>
+                  {p.stack.map((t) => (
+                    <StackChip key={t.name} skill={t} />
+                  ))}
+                </div>
+                <div className="flex gap-5 pt-1 text-sm font-semibold">
+                  {p.videoUrl && (
+                    <a
+                      href={p.videoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-900 underline decoration-slate-300 underline-offset-4 hover:decoration-slate-900"
+                    >
+                      Watch demo
+                    </a>
+                  )}
+                  <a
+                    href={p.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-500 underline decoration-slate-200 underline-offset-4 hover:text-slate-900 hover:decoration-slate-900"
+                  >
+                    Source code
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section id="skills" className="scroll-mt-16 border-y border-slate-200/70 bg-slate-50/70">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+          <SectionHeading eyebrow="Skills" title="Tech Stack" />
+          <div className="space-y-10">
+            {skillGroups.map((g) => (
+              <div key={g.group}>
+                <h3 className="mb-4 text-sm font-semibold text-slate-900">{g.group}</h3>
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-3 sm:grid-cols-[repeat(auto-fill,minmax(210px,1fr))]">
+                  {g.items.map((s) => (
+                    <div
+                      key={`${g.group}-${s.name}`}
+                      className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
+                    >
+                      <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-slate-50 ring-1 ring-slate-100">
+                        <Logo icon={s.icon} name={s.name} size={20} />
+                      </span>
+                      <span className="text-sm font-medium leading-snug text-slate-700">{s.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact */}
-        <section id="contact" className="scroll-mt-20">
-          <SectionHeading eyebrow="Contact" title="Get in Touch" />
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {contactLinks.map((c) => (
-              <a
-                key={c.label}
-                href={c.href}
-                target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
-                className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 transition-colors hover:border-white/20"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">{c.label}</p>
-                <p className="mt-1 truncate text-sm font-medium text-white">{c.value}</p>
-              </a>
-            ))}
-          </div>
-        </section>
+      {/* Contact */}
+      <section id="contact" className="mx-auto max-w-6xl scroll-mt-16 px-5 py-20 sm:px-8 sm:py-24">
+        <SectionHeading
+          eyebrow="Contact"
+          title="Get in Touch"
+          intro="Open to full-stack and mobile roles. The fastest way to reach me is email."
+        />
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {contactLinks.map((c) => (
+            <a
+              key={c.label}
+              href={c.href}
+              target={c.href.startsWith('http') ? '_blank' : undefined}
+              rel={c.href.startsWith('http') ? 'noreferrer' : undefined}
+              className="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
+            >
+              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-slate-50 ring-1 ring-slate-100">
+                <Logo icon={c.icon} name={c.label} size={22} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-xs font-semibold uppercase tracking-wider text-slate-400">{c.label}</span>
+                <span className="mt-0.5 block truncate text-sm font-medium text-slate-900">{c.value}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
 
-        <footer className="border-t border-white/[0.06] pt-6 text-center text-xs text-slate-500">
-          &copy; 2026 Witchakorn Thokul
-        </footer>
-      </div>
+      <footer className="border-t border-slate-200/70">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-8 text-xs text-slate-400 sm:flex-row sm:px-8">
+          <p>&copy; 2026 Witchakorn Thokul</p>
+          <p>Built with Next.js and Tailwind CSS</p>
+        </div>
+      </footer>
     </main>
   );
 }
