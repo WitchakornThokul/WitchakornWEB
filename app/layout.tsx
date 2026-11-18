@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'WITCHAKORN THOKUL | Portfolio',
-  description: 'A production-ready Next.js starter prepared for Vercel deployment.',
+  title: 'Witchakorn Thokul | Full-Stack Developer',
+  description:
+    'Full-stack developer building enterprise web systems on Cloudflare and Supabase, with a background in React Native mobile development.',
 };
 
 export const viewport: Viewport = {
