@@ -13,46 +13,54 @@ const stats = [
   { value: '1', label: 'Central sign-on for all apps' },
 ];
 
+const S = {
+  next: { name: 'Next.js', icon: 'nextdotjs' },
+  react: { name: 'React', icon: 'react' },
+  ts: { name: 'TypeScript', icon: 'typescript' },
+  vite: { name: 'Vite', icon: 'vite' },
+  tw: { name: 'Tailwind CSS', icon: 'tailwindcss' },
+  supabase: { name: 'Supabase', icon: 'supabase' },
+  pg: { name: 'PostgreSQL', icon: 'postgresql' },
+  three: { name: 'Three.js', icon: 'threedotjs' },
+  echarts: { name: 'ECharts', icon: 'apacheecharts' },
+  py: { name: 'Python ETL', icon: 'python' },
+  router: { name: 'React Router', icon: 'reactrouter' },
+  sheets: { name: 'Google Sheets', icon: 'googlesheets' },
+  workers: { name: 'Cloudflare Workers', icon: 'cloudflareworkers' },
+  pages: { name: 'Cloudflare Pages', icon: 'cloudflarepages' },
+} satisfies Record<string, Skill>;
+
 const systems: { name: string; summary: string; stack: Skill[] }[] = [
   {
     name: 'Smart Logistics Platform',
     summary:
       'Transport planning from sales orders, vehicle booking calendar, weighbridge ticket matching and shipment status tracking.',
-    stack: [
-      { name: 'Cloudflare Workers', icon: 'cloudflareworkers' },
-      { name: 'Supabase', icon: 'supabase' },
-    ],
+    stack: [S.next, S.ts, S.tw, S.supabase, S.three, S.workers],
   },
   {
     name: 'Central Portal (SSO)',
-    summary: 'Single sign-on entry point and application launcher for every internal system.',
-    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
+    summary: 'Single sign-on entry point and application launcher for every internal system, with SSO token exchange at the edge.',
+    stack: [S.react, S.vite, S.tw, S.supabase, S.three, S.pages],
   },
   {
     name: 'DocAlert',
     summary: 'Document and contract renewal tracking with approval workflow and email notifications.',
-    stack: [
-      { name: 'Cloudflare Pages', icon: 'cloudflarepages' },
-      { name: 'Supabase', icon: 'supabase' },
-    ],
+    stack: [S.react, S.ts, S.vite, S.router, S.tw, S.supabase, S.pages],
   },
   {
     name: 'Smart Business Dashboard',
-    summary: 'Company KPI dashboard with task-oriented navigation and automated data collectors.',
-    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
+    summary: 'Company KPI dashboard with task-oriented navigation, fed by automated Python data collectors.',
+    stack: [S.react, S.vite, S.tw, S.echarts, S.py, S.pg, S.pages],
   },
   {
     name: 'Mini Business Dashboard',
-    summary: 'Lightweight KPI view with role-based manual overrides for automated metrics.',
-    stack: [{ name: 'Cloudflare Pages', icon: 'cloudflarepages' }],
+    summary: 'Lightweight KPI view with role-based manual overrides for automated metrics and Excel file support.',
+    stack: [S.react, S.vite, S.tw, S.supabase, S.pages],
   },
   {
     name: 'ESG Disclosure Site',
     summary: 'Bilingual Thai and English ESG reporting across five categories.',
-    stack: [
-      { name: 'React', icon: 'react' },
-      { name: 'Vite', icon: 'vite' },
-    ],
+    stack: [S.react, S.vite, S.tw, S.supabase, S.sheets],
   },
 ];
 
@@ -144,6 +152,8 @@ const skillGroups: { group: string; items: Skill[] }[] = [
       { name: 'Tailwind CSS', icon: 'tailwindcss' },
       { name: 'Angular', icon: 'angular' },
       { name: 'Bootstrap', icon: 'bootstrap' },
+      { name: 'Three.js', icon: 'threedotjs' },
+      { name: 'ECharts', icon: 'apacheecharts' },
     ],
   },
   {
