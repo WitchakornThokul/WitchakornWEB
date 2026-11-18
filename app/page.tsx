@@ -172,7 +172,7 @@ export default function Home() {
             <p className="max-w-2xl text-base leading-relaxed text-slate-400">
               I build and operate internal business systems for a manufacturing and logistics organization,
               covering transport planning, KPI dashboards, document workflows and ESG disclosure. Recently led the
-              migration of six production systems to Cloudflare under one company domain with central sign-on.
+              move of five production systems from Vercel to Cloudflare under one company domain with central sign-on.
             </p>
             <div className="flex flex-col gap-3 pt-2 sm:flex-row">
               <a
@@ -211,8 +211,8 @@ export default function Home() {
         <section id="experience" className="scroll-mt-20">
           <SectionHeading eyebrow="Experience" title="Enterprise Systems Portfolio" />
           <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-400">
-            Six production systems used daily by operations, sales and management teams. All moved from Vercel to
-            Cloudflare in November 2026 and share a single sign-on portal.
+            Six production systems used daily by operations, sales and management teams, sharing one company domain
+            and a single sign-on portal. Five moved from Vercel to Cloudflare in November 2026.
           </p>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
