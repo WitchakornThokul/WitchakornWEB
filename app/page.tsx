@@ -190,9 +190,11 @@ export default function Home() {
             </div>
           </div>
           <img
-            src="https://avatars.githubusercontent.com/u/199068319?s=320&v=4"
+            src="/profile.jpg"
             alt="Witchakorn Thokul"
-            className="hidden h-40 w-40 rounded-2xl border border-white/10 object-cover md:block lg:h-48 lg:w-48"
+            width={640}
+            height={640}
+            className="order-first h-28 w-28 rounded-2xl border border-white/10 object-cover sm:h-36 sm:w-36 md:order-none md:h-44 md:w-44 lg:h-52 lg:w-52"
           />
         </section>
 
